@@ -32,6 +32,7 @@ EventAction::~EventAction()
 
 void EventAction::BeginOfEventAction(const G4Event*)
 {
+    event.EventReset();
 }
 
 
