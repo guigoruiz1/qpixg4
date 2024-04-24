@@ -210,7 +210,7 @@ void AnalysisData::AddMCParticle(MCParticle const * particle)
 
   std::vector< TrajectoryHit > const hits = particle->Hits();
 
-  G4cout << "hits size: " << hits.size() << G4endl;
+  // G4cout << "hits size: " << hits.size() << G4endl;
 
   for (auto const & hit : hits)
   {

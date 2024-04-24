@@ -30,16 +30,27 @@ class Supernova {
         double Event_Window_;
         int N_Ar39_Decays_;
         int N_Ar42_Decays_;
+        int N_At218_Decays_;
         int N_Kr85_Decays_;
         int N_Co60_Decays_;
+        int N_Hg206_Decays_;
         int N_K40_Decays_;
         int N_K42_Decays_;
+        int N_Bi209_Decays_;
+        int N_Bi210_Decays_;
         int N_Bi214_Decays_;
+        int N_Pb206_Decays_;
+        int N_Pb209_Decays_;
+        int N_Pb210_Decays_;
         int N_Pb214_Decays_;
         int N_Po210_Decays_;
         int N_Po214_Decays_;
 	    int N_Po218_Decays_;
+        int N_Rn218_Decays_;
         int N_Rn222_Decays_;
+        int N_Tl206_Decays_;
+        int N_Tl210_Decays_;
+        int N_To206_Decays_;
 
         double decay_time;
         

@@ -11,6 +11,7 @@
 #include <G4RadioactiveDecayPhysics.hh>
 #include <G4StepLimiterPhysics.hh>
 #include <G4OpticalPhysics.hh>
+#include <G4HadronPhysicsFTFP_BERT_HP.hh>
 
 
 PhysicsList::PhysicsList(): G4VModularPhysicsList()
@@ -20,6 +21,7 @@ PhysicsList::PhysicsList(): G4VModularPhysicsList()
   RegisterPhysics(new G4RadioactiveDecayPhysics());
   RegisterPhysics(new G4StepLimiterPhysics());
   RegisterPhysics(new G4OpticalPhysics());
+  RegisterPhysics(new G4HadronPhysicsFTFP_BERT_HP());
 }
 
 

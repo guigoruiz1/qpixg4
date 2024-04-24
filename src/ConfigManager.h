@@ -57,16 +57,27 @@ class ConfigManager {
     static G4double      GetVertexZ()                       { return Instance()->vertexZ_; }
     static G4int         GetNAr39Decays()                   { return Instance()->nAr39Decays_; }
     static G4int         GetNAr42Decays()                   { return Instance()->nAr42Decays_; }
+    static G4int         GetNAt218Decays()                   { return Instance()->nAt218Decays_; }
     static G4int         GetNKr85Decays()                   { return Instance()->nKr85Decays_; }
     static G4int         GetNCo60Decays()                   { return Instance()->nCo60Decays_; }
     static G4int         GetNK40Decays()                    { return Instance()->nK40Decays_; }
     static G4int         GetNK42Decays()                    { return Instance()->nK42Decays_; }
+    static G4int         GetNBi209Decays()                   { return Instance()->nBi209Decays_; }
+    static G4int         GetNBi210Decays()                   { return Instance()->nBi210Decays_; }
     static G4int         GetNBi214Decays()                  { return Instance()->nBi214Decays_; }
+    static G4int         GetNHg206Decays()                   { return Instance()->nHg206Decays_; }
+    static G4int         GetNPb209Decays()                   { return Instance()->nPb209Decays_; }
+    static G4int         GetNPb210Decays()                   { return Instance()->nPb210Decays_; }
+    static G4int         GetNPb206Decays()                   { return Instance()->nPb206Decays_; }
     static G4int         GetNPb214Decays()                  { return Instance()->nPb214Decays_; }
     static G4int         GetNPo210Decays()                  { return Instance()->nPo210Decays_; }
     static G4int         GetNPo214Decays()                  { return Instance()->nPo214Decays_; }
     static G4int         GetNPo218Decays()                  { return Instance()->nPo218Decays_; }
+    static G4int         GetNRn218Decays()                   { return Instance()->nRn218Decays_; }
     static G4int         GetNRn222Decays()                  { return Instance()->nRn222Decays_; }
+    static G4int         GetNTl206Decays()                   { return Instance()->nTl206Decays_; }
+    static G4int         GetNTl210Decays()                   { return Instance()->nTl210Decays_; }
+    static G4int         GetNTo206Decays()                   { return Instance()->nTo206Decays_; }
     static G4double      GetEventCutoff()                   { return Instance()->eventCutoff_; }
     static G4double      GetEventWindow()                   { return Instance()->eventWindow_; }
     static G4bool        GetSNTimingOn()                    { return Instance()->snTimingOn_; }
@@ -151,18 +162,29 @@ class ConfigManager {
     G4double      vertexZ_;
 
     // msgSupernova variables
+    G4int         nAt218Decays_;
     G4int         nAr39Decays_;
     G4int         nAr42Decays_;
     G4int         nKr85Decays_;
     G4int         nCo60Decays_;
+    G4int         nHg206Decays_;
     G4int         nK40Decays_;
     G4int         nK42Decays_;
+    G4int         nBi209Decays_;
+    G4int         nBi210Decays_;
     G4int         nBi214Decays_;
+    G4int         nPb206Decays_;
+    G4int         nPb209Decays_;
+    G4int         nPb210Decays_;
     G4int         nPb214Decays_;
     G4int         nPo210Decays_;
     G4int         nPo214Decays_;
     G4int         nPo218Decays_;
+    G4int         nRn218Decays_;
     G4int         nRn222Decays_;
+    G4int         nTl206Decays_;
+    G4int         nTl210Decays_;
+    G4int         nTo206Decays_;
     G4double      eventCutoff_;
     G4double      eventWindow_;
 

@@ -79,13 +79,11 @@ PrimaryGeneration::~PrimaryGeneration()
 
 void PrimaryGeneration::GeneratePrimaries(G4Event* event)
 {
-
+  super = new Supernova(); // Temporary Bug fix
   // Set variables from ConfigManager
   G4bool decay_at_time_zero_ = ConfigManager::GetDecayAtTimeZero();
   G4String particleType_ = ConfigManager::GetParticleType();
-
   G4StrUtil::to_lower(particleType_);
-
 
   // get MC truth manager
   MCTruthManager * mc_truth_manager = MCTruthManager::Instance();

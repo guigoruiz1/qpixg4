@@ -25,16 +25,27 @@
 Supernova::Supernova()
   : N_Ar39_Decays_(ConfigManager::GetNAr39Decays()),
     N_Ar42_Decays_(ConfigManager::GetNAr42Decays()),
+    N_At218_Decays_(ConfigManager::GetNAt218Decays()),
     N_Kr85_Decays_(ConfigManager::GetNKr85Decays()),
     N_Co60_Decays_(ConfigManager::GetNCo60Decays()),
+    N_Hg206_Decays_(ConfigManager::GetNHg206Decays()),
     N_K40_Decays_(ConfigManager::GetNK40Decays()),
     N_K42_Decays_(ConfigManager::GetNK42Decays()),
+    N_Bi209_Decays_(ConfigManager::GetNBi209Decays()),
+    N_Bi210_Decays_(ConfigManager::GetNBi210Decays()),
     N_Bi214_Decays_(ConfigManager::GetNBi214Decays()),
+    N_Pb206_Decays_(ConfigManager::GetNPb206Decays()),
+    N_Pb209_Decays_(ConfigManager::GetNPb209Decays()),
+    N_Pb210_Decays_(ConfigManager::GetNPb210Decays()),
     N_Pb214_Decays_(ConfigManager::GetNPb214Decays()),
     N_Po210_Decays_(ConfigManager::GetNPo210Decays()),
     N_Po214_Decays_(ConfigManager::GetNPo214Decays()),
     N_Po218_Decays_(ConfigManager::GetNPo218Decays()),
-    N_Rn222_Decays_(ConfigManager::GetNRn222Decays())
+    N_Rn218_Decays_(ConfigManager::GetNRn218Decays()),
+    N_Rn222_Decays_(ConfigManager::GetNRn222Decays()),
+    N_Tl206_Decays_(ConfigManager::GetNTl206Decays()),
+    N_Tl210_Decays_(ConfigManager::GetNTl210Decays()),
+    N_To206_Decays_(ConfigManager::GetNTo206Decays())
 {
 }
 
@@ -62,6 +73,14 @@ void Supernova::Gen_Supernova_Background(G4Event* event)
         decay_time = G4UniformRand() * Event_Window_;
         if (G4UniformRand() < 0.5){decay_time *= -1.0;}
         Generate_Radioisotope(event, 18, 42, decay_time, "Vol"); //Ar42 from Volume
+    }
+
+    // Generate At218
+    for (int ct=0; ct<N_At218_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        Generate_Radioisotope(event, 85, 218, decay_time, "Vol"); //At218 from Volume
     }
 
     // Generate Kr85
@@ -105,6 +124,60 @@ void Supernova::Gen_Supernova_Background(G4Event* event)
         Generate_Radioisotope(event, 83, 214, decay_time, "Vol"); //Bi214 from Volume
     }
 
+    // Generate Bi210
+    for (int ct=0; ct<N_Bi210_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 83, 210, decay_time, "Vol"); //Bi210 from Volume
+    }
+
+    // Generate Bi209
+    for (int ct=0; ct<N_Bi209_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 83, 209, decay_time, "Vol"); //Bi209 from Volume
+    }
+
+    // Generate Hg206
+    for (int ct=0; ct<N_Hg206_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 80, 206, decay_time, "Vol"); //Hg206 from Volume
+    }
+
+    // Generate Pb206
+    for (int ct=0; ct<N_Pb206_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 82, 206, decay_time, "Vol"); //Pb206 from Volume
+    }
+
+    // Generate Pb209
+    for (int ct=0; ct<N_Pb209_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 82, 209, decay_time, "Vol"); //Pb209 from Volume
+    }
+
+    // Generate Pb210
+    for (int ct=0; ct<N_Pb210_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 82, 210, decay_time, "Vol"); //Pb210 from Volume
+    }
+
     // Generate Pb214
     for (int ct=0; ct<N_Pb214_Decays_; ct++)
     {
@@ -118,7 +191,7 @@ void Supernova::Gen_Supernova_Background(G4Event* event)
     {
         decay_time = G4UniformRand() * Event_Window_;
         if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 84, 210, decay_time, "APA"); //Po210 from APA
+        Generate_Radioisotope(event, 84, 210, decay_time, "Vol"); //Po210 from APA
     }
         // Generate Po214
     for (int ct=0; ct<N_Po214_Decays_; ct++)
@@ -134,12 +207,48 @@ void Supernova::Gen_Supernova_Background(G4Event* event)
         if (G4UniformRand() < 0.5){decay_time *= -1.0;}
         Generate_Radioisotope(event, 84, 218, decay_time, "Vol"); //Po218 from Volume
     }
+
+    // Generate Rn218
+    for (int ct=0; ct<N_Rn218_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        Generate_Radioisotope(event, 86, 218, decay_time, "Vol"); //Rn218 from Volume
+    }
+
     // Generate Rn222
     for (int ct=0; ct<N_Rn222_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
         if (G4UniformRand() < 0.5){decay_time *= -1.0;}
         Generate_Radioisotope(event, 86, 222, decay_time, "Vol"); //Rn222 from Volume
+    }
+
+    // Generate Tl206
+    for (int ct=0; ct<N_Tl206_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 81, 206, decay_time, "Vol"); //Tl206 from Volume
+    }
+
+    // Generate Tl210
+    for (int ct=0; ct<N_Tl210_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 81, 210, decay_time, "Vol"); //Tl210 from Volume
+    }
+
+    // Generate To206
+    for (int ct=0; ct<N_To206_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+
+        Generate_Radioisotope(event, 90, 206, decay_time, "Vol"); //To206 from Volume
     }
 
 }
@@ -179,7 +288,7 @@ void Supernova::Generate_Radioisotope(G4Event* event, int Atomic_Number, int Ato
     
     G4PrimaryVertex* vertex = new G4PrimaryVertex(G4ThreeVector(Ran_X_,Ran_Y_,Ran_Z_), Decay_Time);
     vertex->SetPrimary(particle);
-    event->AddPrimaryVertex(vertex);    
+    event->AddPrimaryVertex(vertex); 
 }
 
 

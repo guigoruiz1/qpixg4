@@ -42,7 +42,7 @@ RunAction::~RunAction()
 void RunAction::BeginOfRunAction(const G4Run* g4run)
 {
     ConfigManager::Instance();
-    //ConfigManager::Print();
+    ConfigManager::Print();
 
     inputFile_ = ConfigManager::GetInputFile();
     outputFile_ = ConfigManager::GetOutputFile();

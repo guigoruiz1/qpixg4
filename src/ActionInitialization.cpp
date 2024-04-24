@@ -41,17 +41,17 @@ void ActionInitialization::BuildForMaster() const
   SetUserAction(new RunAction());
 
   // To get UI commands prior to /run/initialize, create local actions here (not registered)
-  masterPrimaryGeneration = new PrimaryGeneration;
-  masterEventAction = new EventAction;
+  masterEventAction = new EventAction();
+  masterPrimaryGeneration = new PrimaryGeneration();
 }
 
 void ActionInitialization::Build() const
 {
-  SetUserAction(new PrimaryGeneration);
   SetUserAction(new RunAction());
-  SetUserAction(new EventAction);
-  SetUserAction(new TrackingAction);
-  SetUserAction(new SteppingAction);
+  SetUserAction(new PrimaryGeneration());
+  SetUserAction(new EventAction());
+  SetUserAction(new TrackingAction());
+  SetUserAction(new SteppingAction());
 }
 
 
