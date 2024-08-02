@@ -57,6 +57,7 @@ class ConfigManager {
     static G4double      GetVertexZ()                       { return Instance()->vertexZ_; }
     static G4int         GetNAr39Decays()                   { return Instance()->nAr39Decays_; }
     static G4int         GetNAr42Decays()                   { return Instance()->nAr42Decays_; }
+    static G4int         GetNAt215Decays()                   { return Instance()->nAt215Decays_; }
     static G4int         GetNAt218Decays()                   { return Instance()->nAt218Decays_; }
     static G4int         GetNKr85Decays()                   { return Instance()->nKr85Decays_; }
     static G4int         GetNCo60Decays()                   { return Instance()->nCo60Decays_; }
@@ -64,18 +65,30 @@ class ConfigManager {
     static G4int         GetNK42Decays()                    { return Instance()->nK42Decays_; }
     static G4int         GetNBi209Decays()                   { return Instance()->nBi209Decays_; }
     static G4int         GetNBi210Decays()                   { return Instance()->nBi210Decays_; }
+    static G4int         GetNBi211Decays()                  { return Instance()->nBi211Decays_; }
+    static G4int         GetNBi212Decays()                  { return Instance()->nBi212Decays_; }
     static G4int         GetNBi214Decays()                  { return Instance()->nBi214Decays_; }
     static G4int         GetNHg206Decays()                   { return Instance()->nHg206Decays_; }
     static G4int         GetNPb209Decays()                   { return Instance()->nPb209Decays_; }
     static G4int         GetNPb210Decays()                   { return Instance()->nPb210Decays_; }
+    static G4int         GetNPb211Decays()                   { return Instance()->nPb211Decays_; }
+    static G4int         GetNPb212Decays()                   { return Instance()->nPb212Decays_; }
     static G4int         GetNPb206Decays()                   { return Instance()->nPb206Decays_; }
     static G4int         GetNPb214Decays()                  { return Instance()->nPb214Decays_; }
     static G4int         GetNPo210Decays()                  { return Instance()->nPo210Decays_; }
+    static G4int         GetNPo211Decays()                  { return Instance()->nPo211Decays_; }
+    static G4int         GetNPo212Decays()                  { return Instance()->nPo212Decays_; }
     static G4int         GetNPo214Decays()                  { return Instance()->nPo214Decays_; }
+    static G4int         GetNPo215Decays()                  { return Instance()->nPo215Decays_; }
+    static G4int         GetNPo216Decays()                  { return Instance()->nPo216Decays_; }
     static G4int         GetNPo218Decays()                  { return Instance()->nPo218Decays_; }
     static G4int         GetNRn218Decays()                   { return Instance()->nRn218Decays_; }
+    static G4int         GetNRn219Decays()                  { return Instance()->nRn219Decays_; }
+    static G4int         GetNRn220Decays()                  { return Instance()->nRn220Decays_; }
     static G4int         GetNRn222Decays()                  { return Instance()->nRn222Decays_; }
     static G4int         GetNTl206Decays()                   { return Instance()->nTl206Decays_; }
+    static G4int         GetNTl207Decays()                   { return Instance()->nTl207Decays_; }
+    static G4int         GetNTl208Decays()                   { return Instance()->nTl208Decays_; }
     static G4int         GetNTl210Decays()                   { return Instance()->nTl210Decays_; }
     static G4int         GetNTo206Decays()                   { return Instance()->nTo206Decays_; }
     static G4double      GetEventCutoff()                   { return Instance()->eventCutoff_; }
@@ -111,12 +124,33 @@ class ConfigManager {
     static void SetNCo60Decays(G4int value)                 { Instance()->nCo60Decays_ = value; }
     static void SetNK40Decays(G4int value)                  { Instance()->nK40Decays_ = value; }
     static void SetNK42Decays(G4int value)                  { Instance()->nK42Decays_ = value; }
+    static void SetNAt215Decays(G4int value)                { Instance()->nAt215Decays_ = value; }
+    static void SetNAt218Decays(G4int value)                { Instance()->nAt218Decays_ = value; }
+    static void SetNBi209Decays(G4int value)                { Instance()->nBi209Decays_ = value; }
+    static void SetNBi210Decays(G4int value)                { Instance()->nBi210Decays_ = value; }
+    static void SetNBi211Decays(G4int value)                { Instance()->nBi211Decays_ = value; }
+    static void SetNBi212Decays(G4int value)                { Instance()->nBi212Decays_ = value; }
     static void SetNBi214Decays(G4int value)                { Instance()->nBi214Decays_ = value; }
+    static void SetNHg206Decays(G4int value)                { Instance()->nHg206Decays_ = value; }
+    static void SetNPb210Decays(G4int value)                { Instance()->nPb210Decays_ = value; }
+    static void SetNPb211Decays(G4int value)                { Instance()->nPb211Decays_ = value; }
+    static void SetNPb212Decays(G4int value)                { Instance()->nPb212Decays_ = value; }
     static void SetNPb214Decays(G4int value)                { Instance()->nPb214Decays_ = value; }
     static void SetNPo210Decays(G4int value)                { Instance()->nPo210Decays_ = value; }
+    static void SetNPo211Decays(G4int value)                { Instance()->nPo211Decays_ = value; }
+    static void SetNPo212Decays(G4int value)                { Instance()->nPo212Decays_ = value; }
     static void SetNPo214Decays(G4int value)                { Instance()->nPo214Decays_ = value; }
+    static void SetNPo215Decays(G4int value)                { Instance()->nPo215Decays_ = value; }
+    static void SetNPo216Decays(G4int value)                { Instance()->nPo216Decays_ = value; }
     static void SetNPo218Decays(G4int value)                { Instance()->nPo218Decays_ = value; }
+    static void SetNRn218Decays(G4int value)                { Instance()->nRn218Decays_ = value; }
+    static void SetNRn219Decays(G4int value)                { Instance()->nRn219Decays_ = value; }
+    static void SetNRn220Decays(G4int value)                { Instance()->nRn220Decays_ = value; }
     static void SetNRn222Decays(G4int value)                { Instance()->nRn222Decays_ = value; }
+    static void SetNTl206Decays(G4int value)                { Instance()->nTl206Decays_ = value; }
+    static void SetNTl207Decays(G4int value)                { Instance()->nTl207Decays_ = value; }
+    static void SetNTl208Decays(G4int value)                { Instance()->nTl208Decays_ = value; }
+    static void SetNTl210Decays(G4int value)                { Instance()->nTl210Decays_ = value; }
     static void SetEventCutoff(G4double value)              { Instance()->eventCutoff_ = value; }
     static void SetEventWindow(G4double value)              { Instance()->eventWindow_ = value; }
     static void SetSNTimingOn(G4bool value)                 { Instance()->snTimingOn_ = value; }
@@ -162,6 +196,7 @@ class ConfigManager {
     G4double      vertexZ_;
 
     // msgSupernova variables
+    G4int         nAt215Decays_;
     G4int         nAt218Decays_;
     G4int         nAr39Decays_;
     G4int         nAr42Decays_;
@@ -172,17 +207,29 @@ class ConfigManager {
     G4int         nK42Decays_;
     G4int         nBi209Decays_;
     G4int         nBi210Decays_;
+    G4int         nBi211Decays_;
+    G4int         nBi212Decays_;
     G4int         nBi214Decays_;
     G4int         nPb206Decays_;
     G4int         nPb209Decays_;
     G4int         nPb210Decays_;
+    G4int         nPb211Decays_;
+    G4int         nPb212Decays_;
     G4int         nPb214Decays_;
     G4int         nPo210Decays_;
+    G4int         nPo211Decays_;
+    G4int         nPo212Decays_;
     G4int         nPo214Decays_;
+    G4int         nPo215Decays_;
+    G4int         nPo216Decays_;
     G4int         nPo218Decays_;
     G4int         nRn218Decays_;
+    G4int         nRn219Decays_;
+    G4int         nRn220Decays_;
     G4int         nRn222Decays_;
     G4int         nTl206Decays_;
+    G4int         nTl207Decays_;
+    G4int         nTl208Decays_;
     G4int         nTl210Decays_;
     G4int         nTo206Decays_;
     G4double      eventCutoff_;

@@ -18,34 +18,46 @@
 
 #include "CLHEP/Units/SystemOfUnits.h"
 
-#include <math.h> 
-
+#include <math.h>
 
 //-----------------------------------------------------------------------------
 Supernova::Supernova()
-  : N_Ar39_Decays_(ConfigManager::GetNAr39Decays()),
-    N_Ar42_Decays_(ConfigManager::GetNAr42Decays()),
-    N_At218_Decays_(ConfigManager::GetNAt218Decays()),
-    N_Kr85_Decays_(ConfigManager::GetNKr85Decays()),
-    N_Co60_Decays_(ConfigManager::GetNCo60Decays()),
-    N_Hg206_Decays_(ConfigManager::GetNHg206Decays()),
-    N_K40_Decays_(ConfigManager::GetNK40Decays()),
-    N_K42_Decays_(ConfigManager::GetNK42Decays()),
-    N_Bi209_Decays_(ConfigManager::GetNBi209Decays()),
-    N_Bi210_Decays_(ConfigManager::GetNBi210Decays()),
-    N_Bi214_Decays_(ConfigManager::GetNBi214Decays()),
-    N_Pb206_Decays_(ConfigManager::GetNPb206Decays()),
-    N_Pb209_Decays_(ConfigManager::GetNPb209Decays()),
-    N_Pb210_Decays_(ConfigManager::GetNPb210Decays()),
-    N_Pb214_Decays_(ConfigManager::GetNPb214Decays()),
-    N_Po210_Decays_(ConfigManager::GetNPo210Decays()),
-    N_Po214_Decays_(ConfigManager::GetNPo214Decays()),
-    N_Po218_Decays_(ConfigManager::GetNPo218Decays()),
-    N_Rn218_Decays_(ConfigManager::GetNRn218Decays()),
-    N_Rn222_Decays_(ConfigManager::GetNRn222Decays()),
-    N_Tl206_Decays_(ConfigManager::GetNTl206Decays()),
-    N_Tl210_Decays_(ConfigManager::GetNTl210Decays()),
-    N_To206_Decays_(ConfigManager::GetNTo206Decays())
+    : N_Ar39_Decays_(ConfigManager::GetNAr39Decays()),
+      N_Ar42_Decays_(ConfigManager::GetNAr42Decays()),
+      N_At215_Decays_(ConfigManager::GetNAt215Decays()),
+      N_At218_Decays_(ConfigManager::GetNAt218Decays()),
+      N_Kr85_Decays_(ConfigManager::GetNKr85Decays()),
+      N_Co60_Decays_(ConfigManager::GetNCo60Decays()),
+      N_Hg206_Decays_(ConfigManager::GetNHg206Decays()),
+      N_K40_Decays_(ConfigManager::GetNK40Decays()),
+      N_K42_Decays_(ConfigManager::GetNK42Decays()),
+      N_Bi209_Decays_(ConfigManager::GetNBi209Decays()),
+      N_Bi210_Decays_(ConfigManager::GetNBi210Decays()),
+      N_Bi211_Decays_(ConfigManager::GetNBi211Decays()),
+      N_Bi212_Decays_(ConfigManager::GetNBi212Decays()),
+      N_Bi214_Decays_(ConfigManager::GetNBi214Decays()),
+      N_Pb206_Decays_(ConfigManager::GetNPb206Decays()),
+      N_Pb209_Decays_(ConfigManager::GetNPb209Decays()),
+      N_Pb210_Decays_(ConfigManager::GetNPb210Decays()),
+      N_Pb211_Decays_(ConfigManager::GetNPb211Decays()),
+      N_Pb212_Decays_(ConfigManager::GetNPb212Decays()),
+      N_Pb214_Decays_(ConfigManager::GetNPb214Decays()),
+      N_Po210_Decays_(ConfigManager::GetNPo210Decays()),
+      N_Po211_Decays_(ConfigManager::GetNPo211Decays()),
+      N_Po212_Decays_(ConfigManager::GetNPo212Decays()),
+      N_Po214_Decays_(ConfigManager::GetNPo214Decays()),
+      N_Po215_Decays_(ConfigManager::GetNPo215Decays()),
+      N_Po216_Decays_(ConfigManager::GetNPo216Decays()),
+      N_Po218_Decays_(ConfigManager::GetNPo218Decays()),
+      N_Rn218_Decays_(ConfigManager::GetNRn218Decays()),
+      N_Rn219_Decays_(ConfigManager::GetNRn219Decays()),
+      N_Rn220_Decays_(ConfigManager::GetNRn220Decays()),
+      N_Rn222_Decays_(ConfigManager::GetNRn222Decays()),
+      N_Tl206_Decays_(ConfigManager::GetNTl206Decays()),
+      N_Tl207_Decays_(ConfigManager::GetNTl207Decays()),
+      N_Tl208_Decays_(ConfigManager::GetNTl208Decays()),
+      N_Tl210_Decays_(ConfigManager::GetNTl210Decays()),
+      N_To206_Decays_(ConfigManager::GetNTo206Decays())
 {
 }
 
@@ -54,247 +66,448 @@ Supernova::~Supernova()
 {
 }
 
-
 //-----------------------------------------------------------------------------
-void Supernova::Gen_Supernova_Background(G4Event* event)
+void Supernova::Gen_Supernova_Background(G4Event *event)
 {
     // Generate Ar39
-    for (int ct=0; ct<N_Ar39_Decays_; ct++)
+    for (int ct = 0; ct < N_Ar39_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 18, 39, decay_time, "Vol"); //Ar39 from Volume
+        Generate_Radioisotope(event, 18, 39, decay_time, "Vol"); // Ar39 from Volume
     }
 
     // Generate Ar42
-    for (int ct=0; ct<N_Ar42_Decays_; ct++)
+    for (int ct = 0; ct < N_Ar42_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 18, 42, decay_time, "Vol"); //Ar42 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 18, 42, decay_time, "Vol"); // Ar42 from Volume
     }
 
-    // Generate At218
-    for (int ct=0; ct<N_At218_Decays_; ct++)
+    // Generate At215
+    for (int ct = 0; ct < N_At215_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 85, 218, decay_time, "Vol"); //At218 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 85, 215, decay_time, "Vol"); // At215 from Volume
+    }
+    // Generate At218
+    for (int ct = 0; ct < N_At218_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 85, 218, decay_time, "Vol"); // At218 from Volume
     }
 
     // Generate Kr85
-    for (int ct=0; ct<N_Kr85_Decays_; ct++)
+    for (int ct = 0; ct < N_Kr85_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 36, 85, decay_time, "Vol"); //Kr85 from Volume
+        Generate_Radioisotope(event, 36, 85, decay_time, "Vol"); // Kr85 from Volume
     }
 
     // Generate Co60
-    for (int ct=0; ct<N_Co60_Decays_; ct++)
+    for (int ct = 0; ct < N_Co60_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 27, 60, decay_time, "CPA"); //Co60 from CPA
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 27, 60, decay_time, "CPA"); // Co60 from CPA
     }
-    
+
     // Generate K40
-    for (int ct=0; ct<N_K40_Decays_; ct++)
+    for (int ct = 0; ct < N_K40_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 19, 40, decay_time, "APA"); //K40 from APA
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 19, 40, decay_time, "APA"); // K40 from APA
     }
 
     // Generate K42
-    for (int ct=0; ct<N_K42_Decays_; ct++)
+    for (int ct = 0; ct < N_K42_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 19, 42, decay_time, "Vol"); //K42 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 19, 42, decay_time, "Vol"); // K42 from Volume
+    }
+
+    // Generate Bi211
+    for (int ct = 0; ct < N_Bi211_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 83, 211, decay_time, "Vol"); // Bi211 from Volume
+    }
+    // Generate Bi212
+    for (int ct = 0; ct < N_Bi212_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 83, 212, decay_time, "Vol"); // Bi214 from Volume
     }
 
     // Generate Bi214
-    for (int ct=0; ct<N_Bi214_Decays_; ct++)
+    for (int ct = 0; ct < N_Bi214_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 83, 214, decay_time, "Vol"); //Bi214 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 83, 214, decay_time, "Vol"); // Bi214 from Volume
     }
 
     // Generate Bi210
-    for (int ct=0; ct<N_Bi210_Decays_; ct++)
+    for (int ct = 0; ct < N_Bi210_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 83, 210, decay_time, "Vol"); //Bi210 from Volume
+        Generate_Radioisotope(event, 83, 210, decay_time, "Vol"); // Bi210 from Volume
     }
 
     // Generate Bi209
-    for (int ct=0; ct<N_Bi209_Decays_; ct++)
+    for (int ct = 0; ct < N_Bi209_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 83, 209, decay_time, "Vol"); //Bi209 from Volume
+        Generate_Radioisotope(event, 83, 209, decay_time, "Vol"); // Bi209 from Volume
     }
 
     // Generate Hg206
-    for (int ct=0; ct<N_Hg206_Decays_; ct++)
+    for (int ct = 0; ct < N_Hg206_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 80, 206, decay_time, "Vol"); //Hg206 from Volume
+        Generate_Radioisotope(event, 80, 206, decay_time, "Vol"); // Hg206 from Volume
     }
 
     // Generate Pb206
-    for (int ct=0; ct<N_Pb206_Decays_; ct++)
+    for (int ct = 0; ct < N_Pb206_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 82, 206, decay_time, "Vol"); //Pb206 from Volume
+        Generate_Radioisotope(event, 82, 206, decay_time, "Vol"); // Pb206 from Volume
     }
 
     // Generate Pb209
-    for (int ct=0; ct<N_Pb209_Decays_; ct++)
+    for (int ct = 0; ct < N_Pb209_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 82, 209, decay_time, "Vol"); //Pb209 from Volume
+        Generate_Radioisotope(event, 82, 209, decay_time, "Vol"); // Pb209 from Volume
     }
 
     // Generate Pb210
-    for (int ct=0; ct<N_Pb210_Decays_; ct++)
+    for (int ct = 0; ct < N_Pb210_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 82, 210, decay_time, "Vol"); //Pb210 from Volume
+        Generate_Radioisotope(event, 82, 210, decay_time, "Vol"); // Pb210 from Volume
+    }
+    // Generate Pb211
+    for (int ct = 0; ct < N_Pb211_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+
+        Generate_Radioisotope(event, 82, 211, decay_time, "Vol"); // Pb211 from Volume
+    }
+
+    // Generate Pb212
+    for (int ct = 0; ct < N_Pb212_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 82, 212, decay_time, "Vol"); // Pb212 from Volume
     }
 
     // Generate Pb214
-    for (int ct=0; ct<N_Pb214_Decays_; ct++)
+    for (int ct = 0; ct < N_Pb214_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 82, 214, decay_time, "Vol"); //Pb214 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 82, 214, decay_time, "Vol"); // Pb214 from Volume
     }
 
     // Generate Po210
-    for (int ct=0; ct<N_Po210_Decays_; ct++)
+    for (int ct = 0; ct < N_Po210_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 84, 210, decay_time, "Vol"); //Po210 from APA
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 210, decay_time, "Vol"); // Po210 from APA
     }
-        // Generate Po214
-    for (int ct=0; ct<N_Po214_Decays_; ct++)
+    // Generate Po211
+    for (int ct = 0; ct < N_Po211_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 84, 214, decay_time, "Vol"); //Po214 from Volume
-    }    
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 211, decay_time, "Vol"); // Po211 from APA
+    }
+    // Generate Po212
+    for (int ct = 0; ct < N_Po212_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 212, decay_time, "Vol"); // Po212 from APA
+    }
+    // Generate Po214
+    for (int ct = 0; ct < N_Po214_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 214, decay_time, "Vol"); // Po214 from Volume
+    }
+    // Generate Po215
+    for (int ct = 0; ct < N_Po215_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 215, decay_time, "Vol"); // Po215 from Volume
+    }
+    // Generate Po216
+    for (int ct = 0; ct < N_Po216_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 216, decay_time, "Vol"); // Po216 from Volume
+    }
     // Generate Po218
-    for (int ct=0; ct<N_Po218_Decays_; ct++)
+    for (int ct = 0; ct < N_Po218_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 84, 218, decay_time, "Vol"); //Po218 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 84, 218, decay_time, "Vol"); // Po218 from Volume
     }
 
     // Generate Rn218
-    for (int ct=0; ct<N_Rn218_Decays_; ct++)
+    for (int ct = 0; ct < N_Rn218_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 86, 218, decay_time, "Vol"); //Rn218 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 86, 218, decay_time, "Vol"); // Rn218 from Volume
     }
-
-    // Generate Rn222
-    for (int ct=0; ct<N_Rn222_Decays_; ct++)
+    // Generate Rn219
+    for (int ct = 0; ct < N_Rn219_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
-        Generate_Radioisotope(event, 86, 222, decay_time, "Vol"); //Rn222 from Volume
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 86, 219, decay_time, "Vol"); // Rn219 from Volume
+    }
+    // Generate Rn220
+    for (int ct = 0; ct < N_Rn220_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 86, 220, decay_time, "Vol"); // Rn220 from Volume
+    }
+    // Generate Rn222
+    for (int ct = 0; ct < N_Rn222_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+        Generate_Radioisotope(event, 86, 222, decay_time, "Vol"); // Rn222 from Volume
     }
 
     // Generate Tl206
-    for (int ct=0; ct<N_Tl206_Decays_; ct++)
+    for (int ct = 0; ct < N_Tl206_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 81, 206, decay_time, "Vol"); //Tl206 from Volume
+        Generate_Radioisotope(event, 81, 206, decay_time, "Vol"); // Tl206 from Volume
+    }
+
+    // Generate Tl207
+    for (int ct = 0; ct < N_Tl207_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+
+        Generate_Radioisotope(event, 81, 207, decay_time, "Vol"); // Tl207 from Volume
+    }
+
+    // Generate Tl208
+    for (int ct = 0; ct < N_Tl208_Decays_; ct++)
+    {
+        decay_time = G4UniformRand() * Event_Window_;
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
+
+        Generate_Radioisotope(event, 81, 208, decay_time, "Vol"); // Tl208 from Volume
     }
 
     // Generate Tl210
-    for (int ct=0; ct<N_Tl210_Decays_; ct++)
+    for (int ct = 0; ct < N_Tl210_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 81, 210, decay_time, "Vol"); //Tl210 from Volume
+        Generate_Radioisotope(event, 81, 210, decay_time, "Vol"); // Tl210 from Volume
     }
 
     // Generate To206
-    for (int ct=0; ct<N_To206_Decays_; ct++)
+    for (int ct = 0; ct < N_To206_Decays_; ct++)
     {
         decay_time = G4UniformRand() * Event_Window_;
-        if (G4UniformRand() < 0.5){decay_time *= -1.0;}
+        if (G4UniformRand() < 0.5)
+        {
+            decay_time *= -1.0;
+        }
 
-        Generate_Radioisotope(event, 90, 206, decay_time, "Vol"); //To206 from Volume
+        Generate_Radioisotope(event, 90, 206, decay_time, "Vol"); // To206 from Volume
     }
-
 }
 
-
 //-----------------------------------------------------------------------------
-void Supernova::Generate_Radioisotope(G4Event* event, int Atomic_Number, int Atomic_Mass, double Decay_Time, std::string Region)
+void Supernova::Generate_Radioisotope(G4Event *event, int Atomic_Number, int Atomic_Mass, double Decay_Time, std::string Region)
 {
-    G4ParticleDefinition* pdef = G4IonTable::GetIonTable()->GetIon(Atomic_Number, Atomic_Mass, 0.); // Ar39
-    if (!pdef)G4Exception("SetParticleDefinition()", "[IonGun]",FatalException, " can not create ion ");
+    G4ParticleDefinition *pdef = G4IonTable::GetIonTable()->GetIon(Atomic_Number, Atomic_Mass, 0.); // Ar39
+    if (!pdef)
+        G4Exception("SetParticleDefinition()", "[IonGun]", FatalException, " can not create ion ");
 
     // pdef->SetPDGLifeTime(1.*CLHEP::ps);
-    pdef->SetPDGLifeTime(1.*CLHEP::ps);
+    pdef->SetPDGLifeTime(1. * CLHEP::ps);
 
-    G4PrimaryParticle* particle = new G4PrimaryParticle(pdef);
+    G4PrimaryParticle *particle = new G4PrimaryParticle(pdef);
 
     Random_Direction(Px_hat, Py_hat, Pz_hat, 1);
     particle->SetMomentumDirection(G4ThreeVector(Px_hat, Py_hat, Pz_hat));
-    particle->SetKineticEnergy(1.*CLHEP::eV); // just an ion sitting
+    particle->SetKineticEnergy(1. * CLHEP::eV); // just an ion sitting
 
     if (Region == "Vol")
     {
-        Gen_Uniform_Position( Ran_X_,  Ran_Y_,  Ran_Z_);
+        Gen_Uniform_Position(Ran_X_, Ran_Y_, Ran_Z_);
     }
     else if (Region == "APA")
     {
-        Gen_APA_Position( Ran_X_,  Ran_Y_,  Ran_Z_);
+        Gen_APA_Position(Ran_X_, Ran_Y_, Ran_Z_);
     }
     else if (Region == "CPA")
     {
-        Gen_CPA_Position( Ran_X_,  Ran_Y_,  Ran_Z_);
+        Gen_CPA_Position(Ran_X_, Ran_Y_, Ran_Z_);
     }
     else
     {
-        G4Exception("invilad ion region", "[supernova]",FatalException, " can not get Region");
+        G4Exception("invilad ion region", "[supernova]", FatalException, " can not get Region");
     }
-    
-    G4PrimaryVertex* vertex = new G4PrimaryVertex(G4ThreeVector(Ran_X_,Ran_Y_,Ran_Z_), Decay_Time);
+
+    G4PrimaryVertex *vertex = new G4PrimaryVertex(G4ThreeVector(Ran_X_, Ran_Y_, Ran_Z_), Decay_Time);
     vertex->SetPrimary(particle);
-    event->AddPrimaryVertex(vertex); 
+    event->AddPrimaryVertex(vertex);
 }
 
-
-
 //-----------------------------------------------------------------------------
-void Supernova::Gen_Uniform_Position(double& Ran_X, double& Ran_Y, double& Ran_Z)
+void Supernova::Gen_Uniform_Position(double &Ran_X, double &Ran_Y, double &Ran_Z)
 {
     Ran_X = G4UniformRand() * detector_length_x_;
     Ran_Y = G4UniformRand() * detector_length_y_;
@@ -302,110 +515,108 @@ void Supernova::Gen_Uniform_Position(double& Ran_X, double& Ran_Y, double& Ran_Z
 }
 
 //-----------------------------------------------------------------------------
-void Supernova::Gen_CPA_Position(double& Ran_X, double& Ran_Y, double& Ran_Z)
+void Supernova::Gen_CPA_Position(double &Ran_X, double &Ran_Y, double &Ran_Z)
 {
     Ran_X = G4UniformRand() * detector_length_x_;
     Ran_Y = G4UniformRand() * detector_length_y_;
-    Ran_Z = detector_length_z_ - 1 *CLHEP::um;
+    Ran_Z = detector_length_z_ - 1 * CLHEP::um;
 }
 
 //-----------------------------------------------------------------------------
-void Supernova::Gen_APA_Position(double& Ran_X, double& Ran_Y, double& Ran_Z)
+void Supernova::Gen_APA_Position(double &Ran_X, double &Ran_Y, double &Ran_Z)
 {
 
     double case_weight = G4UniformRand();
-    Ran_X = -10 *CLHEP::m;
-    Ran_Y = -10 *CLHEP::m;
-    Ran_Z = 1 *CLHEP::um;
+    Ran_X = -10 * CLHEP::m;
+    Ran_Y = -10 * CLHEP::m;
+    Ran_Z = 1 * CLHEP::um;
 
     if (case_weight <= 0.6)
     {
-        int case_number = ceil(G4UniformRand()*3);
+        int case_number = ceil(G4UniformRand() * 3);
         // APA 3x long supports
         if (case_number == 1)
         {
-            Ran_X = 0.0 *CLHEP::m  + G4UniformRand() * 0.10 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + G4UniformRand() * (6 *CLHEP::m - 0.15*2 *CLHEP::m);
+            Ran_X = 0.0 * CLHEP::m + G4UniformRand() * 0.10 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + G4UniformRand() * (6 * CLHEP::m - 0.15 * 2 * CLHEP::m);
         }
-        else if (case_number == 2 )
+        else if (case_number == 2)
         {
-            Ran_X = 1.10 *CLHEP::m + G4UniformRand() * 0.10 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + G4UniformRand() * (6 *CLHEP::m - 0.15*2 *CLHEP::m);
+            Ran_X = 1.10 * CLHEP::m + G4UniformRand() * 0.10 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + G4UniformRand() * (6 * CLHEP::m - 0.15 * 2 * CLHEP::m);
         }
-        else if (case_number == 3 )
+        else if (case_number == 3)
         {
-            Ran_X = 2.20 *CLHEP::m + G4UniformRand() * 0.10 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + G4UniformRand() * (6 *CLHEP::m - 0.15*2 *CLHEP::m);
+            Ran_X = 2.20 * CLHEP::m + G4UniformRand() * 0.10 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + G4UniformRand() * (6 * CLHEP::m - 0.15 * 2 * CLHEP::m);
         }
     }
     else if (case_weight >= 0.6 && case_weight <= 0.8)
     {
-        int case_number = ceil(G4UniformRand()*2);
+        int case_number = ceil(G4UniformRand() * 2);
         // APA header and footer
-        if (case_number == 1 )
+        if (case_number == 1)
         {
-            Ran_X = G4UniformRand() * 2.3 *CLHEP::m;
-            Ran_Y = G4UniformRand() * 0.15 *CLHEP::m;
+            Ran_X = G4UniformRand() * 2.3 * CLHEP::m;
+            Ran_Y = G4UniformRand() * 0.15 * CLHEP::m;
         }
-        else if (case_number == 2 )
+        else if (case_number == 2)
         {
-            Ran_X = G4UniformRand() * 2.3 *CLHEP::m;
-            Ran_Y = 6 *CLHEP::m - G4UniformRand() * 0.15 *CLHEP::m;
+            Ran_X = G4UniformRand() * 2.3 * CLHEP::m;
+            Ran_Y = 6 * CLHEP::m - G4UniformRand() * 0.15 * CLHEP::m;
         }
     }
     else if (case_weight >= 0.8)
     {
-        int case_number = ceil(G4UniformRand()*8);
+        int case_number = ceil(G4UniformRand() * 8);
         // Now the 8x cross braces
-        if (case_number == 1 )
+        if (case_number == 1)
         {
-            Ran_X = 0.10 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*1 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 0.10 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 1 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 2 )
+        else if (case_number == 2)
         {
-            Ran_X = 0.10 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*2 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 0.10 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 2 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 3 )
+        else if (case_number == 3)
         {
-            Ran_X = 0.10 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*3 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 0.10 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 3 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 4 )
+        else if (case_number == 4)
         {
-            Ran_X = 0.10 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*4 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 0.10 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 4 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 5 )
+        else if (case_number == 5)
         {
-            Ran_X = 1.20 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*1 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 1.20 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 1 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 6 )
+        else if (case_number == 6)
         {
-            Ran_X = 1.20 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*2 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 1.20 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 2 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 7 )
+        else if (case_number == 7)
         {
-            Ran_X = 1.20 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*3 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 1.20 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 3 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-        else if (case_number == 8 )
+        else if (case_number == 8)
         {
-            Ran_X = 1.20 *CLHEP::m + G4UniformRand() * 1.0 *CLHEP::m;
-            Ran_Y = 0.15 *CLHEP::m + 1.115*4 *CLHEP::m + G4UniformRand() * (0.05 *CLHEP::m);
+            Ran_X = 1.20 * CLHEP::m + G4UniformRand() * 1.0 * CLHEP::m;
+            Ran_Y = 0.15 * CLHEP::m + 1.115 * 4 * CLHEP::m + G4UniformRand() * (0.05 * CLHEP::m);
         }
-    }  
-    
+    }
 }
 
-
 //-----------------------------------------------------------------------------
-inline void Supernova::Random_Direction(double& dx, double& dy, double& dz, const double length = 1.) 
+inline void Supernova::Random_Direction(double &dx, double &dy, double &dz, const double length = 1.)
 {
-    const double phi = 2*M_PI * G4UniformRand();
+    const double phi = 2 * M_PI * G4UniformRand();
     const double ctheta = 2 * G4UniformRand() - 1.;
     const double stheta = sqrt(1. - ctheta * ctheta);
     dx = length * cos(phi) * stheta;

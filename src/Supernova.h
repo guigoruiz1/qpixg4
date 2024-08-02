@@ -30,6 +30,7 @@ class Supernova {
         double Event_Window_;
         int N_Ar39_Decays_;
         int N_Ar42_Decays_;
+        int N_At215_Decays_;
         int N_At218_Decays_;
         int N_Kr85_Decays_;
         int N_Co60_Decays_;
@@ -38,17 +39,29 @@ class Supernova {
         int N_K42_Decays_;
         int N_Bi209_Decays_;
         int N_Bi210_Decays_;
+        int N_Bi211_Decays_;
+        int N_Bi212_Decays_;
         int N_Bi214_Decays_;
         int N_Pb206_Decays_;
         int N_Pb209_Decays_;
         int N_Pb210_Decays_;
+        int N_Pb211_Decays_;
+        int N_Pb212_Decays_;
         int N_Pb214_Decays_;
         int N_Po210_Decays_;
+        int N_Po211_Decays_;
+        int N_Po212_Decays_;
         int N_Po214_Decays_;
+        int N_Po215_Decays_;
+        int N_Po216_Decays_;
 	    int N_Po218_Decays_;
         int N_Rn218_Decays_;
+        int N_Rn219_Decays_;
+        int N_Rn220_Decays_;
         int N_Rn222_Decays_;
         int N_Tl206_Decays_;
+        int N_Tl207_Decays_;
+        int N_Tl208_Decays_;
         int N_Tl210_Decays_;
         int N_To206_Decays_;
 

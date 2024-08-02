@@ -1,0 +1,30 @@
+
+# set verbosity
+/control/verbose 1
+/run/verbose 1
+/tracking/verbose 0
+
+# configure supernova
+/inputs/particle_type SUPERNOVA
+
+# output path
+/inputs/output_file ./output/radiogenic_Po215_background.root
+
+# initialize run
+/run/initialize
+/random/setSeeds 137 100
+
+# event ID offset
+/event/offset 0
+
+# Supernova configs
+/supernova/Event_Window 10 s
+/supernova/Event_Cutoff 10 s
+
+/supernova/N_Po215_Decays 1
+
+/process/had/rdm/nucleusLimits 215 215 84 84
+
+# run
+/run/beamOn 10000
+

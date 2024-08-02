@@ -46,6 +46,7 @@ ConfigManager::ConfigManager()
   particleType_(""), decayAtTimeZero_(false), isotropic_(true),
   overrideVertexPosition_(false), printParticleInfo_(false), inputFile_(""), outputFile_(""), marleyJson_(""), generator_(""),
   genieFormat_(""), multirun_(false), momentumDirection_(0,0,0), vertexX_(2.3*CLHEP::m/2), vertexY_(6.0*CLHEP::m/2), vertexZ_(3.7*CLHEP::m/2),
+  nAt215Decays_(0), 
   nAt218Decays_(0), 
   nAr39Decays_(0), 
   nAr42Decays_(0), 
@@ -56,16 +57,27 @@ ConfigManager::ConfigManager()
   nK42Decays_(0), 
   nBi209Decays_(0),
   nBi210Decays_(0),
+  nBi211Decays_(0),
+  nBi212Decays_(0),
   nBi214Decays_(0),
   nPb206Decays_(0),
   nPb209Decays_(0), 
-  nPb210Decays_(0), 
+  nPb210Decays_(0),
+  nPb211Decays_(0),
+  nPb212Decays_(0), 
   nPb214Decays_(0), 
   nPo210Decays_(0), 
+  nPo211Decays_(0), 
   nPo214Decays_(0), 
+  nPo215Decays_(0), 
+  nPo216Decays_(0), 
   nPo218Decays_(0), 
   nRn218Decays_(0), 
-  nRn222Decays_(0), 
+  nRn219Decays_(0), 
+  nRn220Decays_(0), 
+  nRn222Decays_(0),
+  nTl207Decays_(0), 
+  nTl208Decays_(0), 
   nTl210Decays_(0),
   nTo206Decays_(0), 
   eventCutoff_(0),
@@ -89,6 +101,7 @@ ConfigManager::ConfigManager(const ConfigManager& master)
   multirun_(master.multirun_), momentumDirection_(master.momentumDirection_),
   vertexX_(master.vertexX_), vertexY_(master.vertexY_),
   vertexZ_(master.vertexZ_),
+  nAt215Decays_(master.nAt215Decays_),
   nAt218Decays_(master.nAt218Decays_),
   nAr39Decays_(master.nAr39Decays_), 
   nAr42Decays_(master.nAr42Decays_),
@@ -97,18 +110,30 @@ ConfigManager::ConfigManager(const ConfigManager& master)
   nK40Decays_(master.nK40Decays_), 
   nK42Decays_(master.nK42Decays_),
   nBi209Decays_(master.nBi209Decays_),
-  nBi210Decays_(master.nBi210Decays_), 
+  nBi210Decays_(master.nBi210Decays_),
+  nBi211Decays_(master.nBi211Decays_),
+  nBi212Decays_(master.nBi212Decays_), 
   nBi214Decays_(master.nBi214Decays_), 
   nHg206Decays_(master.nHg206Decays_), 
   nPb209Decays_(master.nPb209Decays_),
   nPb210Decays_(master.nPb210Decays_),
+  nPb211Decays_(master.nPb211Decays_),
+  nPb212Decays_(master.nPb212Decays_),
   nPb214Decays_(master.nPb214Decays_),
   nPo210Decays_(master.nPo210Decays_), 
+  nPo211Decays_(master.nPo211Decays_), 
+  nPo212Decays_(master.nPo212Decays_), 
   nPo214Decays_(master.nPo214Decays_), 
+  nPo215Decays_(master.nPo215Decays_), 
+  nPo216Decays_(master.nPo216Decays_), 
   nPo218Decays_(master.nPo218Decays_), 
   nRn218Decays_(master.nRn218Decays_),
+  nRn219Decays_(master.nRn219Decays_),
+  nRn220Decays_(master.nRn220Decays_),
   nRn222Decays_(master.nRn222Decays_),
   nTl206Decays_(master.nTl206Decays_),
+  nTl207Decays_(master.nTl207Decays_),
+  nTl208Decays_(master.nTl208Decays_),
   nTl210Decays_(master.nTl210Decays_),
   nTo206Decays_(master.nTo206Decays_),
   eventCutoff_(master.eventCutoff_), 
@@ -168,6 +193,7 @@ void ConfigManager::CreateCommands()
   // Declare all properties for msgSupernova
   msgSupernova_->DeclareProperty("N_Ar39_Decays", nAr39Decays_,  "number of Ar39 decays");
   msgSupernova_->DeclareProperty("N_Ar42_Decays", nAr42Decays_,  "number of Ar42 decays");
+  msgSupernova_->DeclareProperty("N_At215_Decays", nAt218Decays_,  "number of At215 decays");
   msgSupernova_->DeclareProperty("N_At218_Decays", nAt218Decays_,  "number of At218 decays");
   msgSupernova_->DeclareProperty("N_Kr85_Decays", nKr85Decays_,  "number of Kr85 decays");
   msgSupernova_->DeclareProperty("N_Co60_Decays", nCo60Decays_,  "number of Co60 decays");
@@ -176,17 +202,29 @@ void ConfigManager::CreateCommands()
   msgSupernova_->DeclareProperty("N_K42_Decays", nK42Decays_,  "number of K42 decays");
   msgSupernova_->DeclareProperty("N_Bi209_Decays", nBi209Decays_,  "number of Bi209 decays");
   msgSupernova_->DeclareProperty("N_Bi210_Decays", nBi210Decays_,  "number of Bi210 decays");
+  msgSupernova_->DeclareProperty("N_Bi211_Decays", nBi211Decays_,  "number of Bi211 decays");
+  msgSupernova_->DeclareProperty("N_Bi212_Decays", nBi209Decays_,  "number of Bi212 decays");
   msgSupernova_->DeclareProperty("N_Bi214_Decays", nBi214Decays_,  "number of Bi214 decays");
   msgSupernova_->DeclareProperty("N_Pb206_Decays", nPb206Decays_,  "number of Pb206 decays");
   msgSupernova_->DeclareProperty("N_Pb209_Decays", nPb209Decays_,  "number of Pb209 decays");
   msgSupernova_->DeclareProperty("N_Pb210_Decays", nPb210Decays_,  "number of Pb210 decays");
+  msgSupernova_->DeclareProperty("N_Pb211_Decays", nPb211Decays_,  "number of Pb211 decays");
+  msgSupernova_->DeclareProperty("N_Pb212_Decays", nPb212Decays_,  "number of Pb212 decays");
   msgSupernova_->DeclareProperty("N_Pb214_Decays", nPb214Decays_,  "number of Pb214 decays");
   msgSupernova_->DeclareProperty("N_Po210_Decays", nPo210Decays_,  "number of Po210 decays");
+  msgSupernova_->DeclareProperty("N_Po211_Decays", nPo211Decays_,  "number of Po211 decays");
+  msgSupernova_->DeclareProperty("N_Po212_Decays", nPo212Decays_,  "number of Po212 decays");
   msgSupernova_->DeclareProperty("N_Po214_Decays", nPo214Decays_,  "number of Po214 decays");
+  msgSupernova_->DeclareProperty("N_Po215_Decays", nPo215Decays_,  "number of Po215 decays");
+  msgSupernova_->DeclareProperty("N_Po216_Decays", nPo216Decays_,  "number of Po216 decays");
   msgSupernova_->DeclareProperty("N_Po218_Decays", nPo218Decays_,  "number of Po218 decays");
   msgSupernova_->DeclareProperty("N_Rn218_Decays", nRn218Decays_,  "number of Rn218 decays");
+  msgSupernova_->DeclareProperty("N_Rn219_Decays", nRn219Decays_,  "number of Rn219 decays");
+  msgSupernova_->DeclareProperty("N_Rn220_Decays", nRn220Decays_,  "number of Rn220 decays");
   msgSupernova_->DeclareProperty("N_Rn222_Decays", nRn222Decays_,  "number of Rn222 decays");
   msgSupernova_->DeclareProperty("N_Tl206_Decays", nTl206Decays_,  "number of Tl206 decays");
+  msgSupernova_->DeclareProperty("N_Tl207_Decays", nTl207Decays_,  "number of Tl207 decays");
+  msgSupernova_->DeclareProperty("N_Tl208_Decays", nTl208Decays_,  "number of Tl208 decays");
   msgSupernova_->DeclareProperty("N_Tl210_Decays", nTl210Decays_,  "number of Tl210 decays");
   msgSupernova_->DeclareProperty("N_To206_Decays", nTo206Decays_,  "number of To206 decays");
 
@@ -226,6 +264,7 @@ void ConfigManager::PrintConfig() const
      << "Input -- Vertex_Z:                 " << vertexZ_/CLHEP::mm << " mm" << G4endl
      << "Input -- Multirun:                 " << multirun_ << G4endl
      << G4endl
+     << "Supernova -- N_At215_Decays:  " << nAt215Decays_ << G4endl
      << "Supernova -- N_At218_Decays:  " << nAt218Decays_ << G4endl
      << "Supernova -- N_Ar39_Decays:  " << nAr39Decays_ << G4endl
      << "Supernova -- N_Ar42_Decays:  " << nAr42Decays_ << G4endl
@@ -236,17 +275,29 @@ void ConfigManager::PrintConfig() const
      << "Supernova -- N_K42_Decays:   " << nK42Decays_ << G4endl
      << "Supernova -- N_Bi209_Decays: " << nBi209Decays_ << G4endl
      << "Supernova -- N_Bi210_Decays: " << nBi210Decays_ << G4endl
+     << "Supernova -- N_Bi211_Decays: " << nBi211Decays_ << G4endl
+     << "Supernova -- N_Bi212_Decays: " << nBi212Decays_ << G4endl
      << "Supernova -- N_Bi214_Decays: " << nBi214Decays_ << G4endl
      << "Supernova -- N_Pb206_Decays: " << nPb206Decays_ << G4endl
      << "Supernova -- N_Pb209_Decays: " << nPb209Decays_ << G4endl
      << "Supernova -- N_Pb210_Decays: " << nPb210Decays_ << G4endl
+     << "Supernova -- N_Pb211_Decays: " << nPb211Decays_ << G4endl
+     << "Supernova -- N_Pb212_Decays: " << nPb212Decays_ << G4endl
      << "Supernova -- N_Pb214_Decays: " << nPb214Decays_ << G4endl
      << "Supernova -- N_Po210_Decays: " << nPo210Decays_ << G4endl
+     << "Supernova -- N_Po211_Decays: " << nPo211Decays_ << G4endl
+     << "Supernova -- N_Po212_Decays: " << nPo212Decays_ << G4endl
      << "Supernova -- N_Po214_Decays: " << nPo214Decays_ << G4endl
+     << "Supernova -- N_Po215_Decays: " << nPo215Decays_ << G4endl
+     << "Supernova -- N_Po216_Decays: " << nPo216Decays_ << G4endl
      << "Supernova -- N_Po218_Decays: " << nPo218Decays_ << G4endl
      << "Supernova -- N_Rn218_Decays: " << nRn218Decays_ << G4endl
+     << "Supernova -- N_Rn219_Decays: " << nRn219Decays_ << G4endl
+     << "Supernova -- N_Rn220_Decays: " << nRn220Decays_ << G4endl
      << "Supernova -- N_Rn222_Decays: " << nRn222Decays_ << G4endl
      << "Supernova -- N_Tl206_Decays: " << nTl206Decays_ << G4endl
+     << "Supernova -- N_Tl207_Decays: " << nTl207Decays_ << G4endl
+     << "Supernova -- N_Tl208_Decays: " << nTl208Decays_ << G4endl
      << "Supernova -- N_Tl210_Decays: " << nTl210Decays_ << G4endl
      << "Supernova -- N_To206_Decays: " << nTo206Decays_ << G4endl
      << "Supernova -- Event_Cutoff:   " << eventCutoff_/CLHEP::ns << " ns" << G4endl
