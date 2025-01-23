@@ -14,7 +14,7 @@
 /inputs/vertex_z 1.8 m
 
 # output path
-/inputs/output_file ./output/marley_solar_B8_ES.root
+/inputs/output_file ./output/marley_solar_B8_ES_100k.root
 
 # initialize run
 /run/initialize
@@ -24,4 +24,4 @@
 /process/had/rdm/nucleusLimits 1 35 1 17  # aMin aMax zMin zMax
 
 # run
-/run/beamOn 10000
+/run/beamOn 100000

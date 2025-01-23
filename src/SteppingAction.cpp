@@ -25,6 +25,11 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
+  if(step->GetPostStepPoint()){
+    G4Track* track = (G4Track*)(step->GetTrack());
+    if(track && step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "nCapture")
+      track->SetTrackStatus(fKillTrackAndSecondaries);
+  } 
     AnalysisManager::Instance();
 
     if (step->GetPostStepPoint()->GetProcessDefinedStep() != 0){

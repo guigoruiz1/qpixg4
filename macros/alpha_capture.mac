@@ -1,0 +1,31 @@
+# set verbosity
+/control/verbose 2
+/run/verbose 2
+/tracking/verbose 0
+
+# output path
+/inputs/output_file ./output/alpha_capture.root
+
+# initialize run
+/run/initialize
+/random/setSeeds 0 16
+
+/process/had/rdm/nucleusLimits 39 39 18 18
+
+/gps/particle gamma
+
+#source whole LAr volume
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/centre 115 300 180 cm
+/gps/pos/halfx 115 cm
+/gps/pos/halfy 300 cm
+/gps/pos/halfz 180 cm
+
+# energy distribution
+/gps/ene/type User
+/gps/hist/type energy
+/control/execute ./macros/alpha_capture.dat
+
+# run
+/run/beamOn 10000

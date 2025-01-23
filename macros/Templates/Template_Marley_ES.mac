@@ -6,7 +6,7 @@
 # configure marley
 /inputs/generator MARLEY
 /inputs/particle_type MARLEY
-/inputs/MARLEY_json ../cfg/marley_config.js
+/inputs/MARLEY_json ./cfg/marley_config_ES.js
 /inputs/isotropic false
 /inputs/override_vertex_position false
 /inputs/vertex_x 1.15 m
@@ -14,7 +14,7 @@
 /inputs/vertex_z 1.8 m
 
 # output path
-/inputs/output_file ../output/MARLEY.root
+/inputs/output_file ./output/MARLEY_ES.root
 
 # initialize run
 /run/initialize
@@ -24,4 +24,4 @@
 #/process/had/rdm/nucleusLimits 1 35 1 17  # aMin aMax zMin zMax
 
 # run
-/run/beamOn 100
+/run/beamOn 10000

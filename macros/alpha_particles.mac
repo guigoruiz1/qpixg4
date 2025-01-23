@@ -1,0 +1,40 @@
+# set verbosity
+/control/verbose 1
+/run/verbose 1
+/tracking/verbose 0
+
+# output path
+/inputs/output_file ./output/alpha.root
+
+# initialize run
+/run/initialize
+/random/setSeeds 0 31
+
+# limit radioactive decays
+#/process/had/rdm/nucleusLimits 1 35 1 17  # aMin aMax zMin zMax
+
+# particle type
+# e-, e+, mu-, mu+, neutron, proton, anti_proton, pi-, pi+, pi0, kaon-, kaon+,
+# gamma, opticalphoton, ...
+/gps/particle alpha
+
+#source whole LAr volume
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/centre 115 300 180 cm
+/gps/pos/halfx 115 cm
+/gps/pos/halfy 300 cm
+/gps/pos/halfz 180 cm
+
+# angular distribution
+/gps/ang/type iso
+
+# energy distribution
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 5000
+/gps/ene/max 20 MeV
+/gps/ene/min 1 MeV
+
+# run
+/run/beamOn 50000
