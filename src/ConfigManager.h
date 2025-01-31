@@ -95,7 +95,7 @@ class ConfigManager {
     static G4double      GetEventWindow()                   { return Instance()->eventWindow_; }
     static G4bool        GetSNTimingOn()                    { return Instance()->snTimingOn_; }
     static G4String      GetTh2Name()                       { return Instance()->th2Name_; }
-    static G4bool        GetUseHDDetectorConfiguration()    { return Instance()->useHDDetectorConfiguration_; }
+    static const G4String&  GetDetectorConfiguration()      { return Instance()->detectorConfiguration_; }
     static G4double      GetDetectorLength()                { return Instance()->detectorLength_; }
     static G4double      GetDetectorWidth()                 { return Instance()->detectorWidth_; }
     static G4double      GetDetectorHeight()                { return Instance()->detectorHeight_; }
@@ -155,7 +155,7 @@ class ConfigManager {
     static void SetEventWindow(G4double value)              { Instance()->eventWindow_ = value; }
     static void SetSNTimingOn(G4bool value)                 { Instance()->snTimingOn_ = value; }
     static void SetTh2Name(G4String value)                  { Instance()->th2Name_ = value; }            
-    static void SetUseHDDetectorConfiguration(G4bool value) { Instance()->useHDDetectorConfiguration_ = value; }
+    static void SetDetectorConfiguration(const G4String& value)   { Instance()->detectorConfiguration_ = value; }
     static void SetDetectorLength(G4double value)           { Instance()->detectorLength_ = value; }
     static void SetDetectorWidth(G4double value)            { Instance()->detectorWidth_ = value; }
     static void SetDetectorHeight(G4double value)           { Instance()->detectorHeight_ = value; }
@@ -240,7 +240,7 @@ class ConfigManager {
     G4String      th2Name_;
 
     // msgGeometry variables
-    G4bool        useHDDetectorConfiguration_;
+    G4String      detectorConfiguration_;
     G4double      detectorLength_;
     G4double      detectorWidth_;
     G4double      detectorHeight_;
